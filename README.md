@@ -1,3 +1,3 @@
 flutter doctor
-C;/flutter
+C;/flutter important
 flutter doctor --android-licenses
