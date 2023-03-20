@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sm_work/components/my_button.dart';
 import 'package:sm_work/components/my_textfield.dart';
+import 'package:sm_work/components/square_tile.dart';
 
 class LoginPage extends StatelessWidget{
 
@@ -17,6 +18,7 @@ class LoginPage extends StatelessWidget{
       body:SafeArea(
         child:Center(
             child:Column(
+              mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height:50),
                   const Icon(Icons.lock,
@@ -24,7 +26,7 @@ class LoginPage extends StatelessWidget{
                   ),
                   const SizedBox(height:50),
                   Text(
-                    'Welcome Back',
+                    'Hello ',
                     style: TextStyle(
                         color: Colors.grey[700],
                         fontSize:16
@@ -72,10 +74,28 @@ class LoginPage extends StatelessWidget{
                         ),
                       ],
                     ),),
-                  Row(children: [
-                    Image.asset('lib/images/google.png',height: 40,),
+                  const SizedBox(height: 50,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    SquareTile(imagePath: 'lib/images/google.png'),
                     const SizedBox(width: 10),
-                    Image.asset('lib/images/apple.png',height: 40,),
+                    SquareTile(imagePath:'lib/images/apple.png'),
+                  ],
+                  ),
+                  const SizedBox(height: 50,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    Text('Not a member?',
+                    style: TextStyle(
+                      color:Colors.grey[700]
+                    ),),
+                    const SizedBox(width: 4,),
+                    Text('Register Now',
+                    style: TextStyle(
+                      color:Colors.blue, fontWeight: FontWeight.bold
+                    ),)
                   ],)
 
 
