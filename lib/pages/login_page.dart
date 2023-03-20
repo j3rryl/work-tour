@@ -1,40 +1,86 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:sm_work/components/my_button.dart';
 import 'package:sm_work/components/my_textfield.dart';
 import 'package:sm_work/components/square_tile.dart';
 
-class LoginPage extends StatelessWidget{
+class LoginPage extends StatefulWidget{
 
   LoginPage({super.key});
-  final usernameController = TextEditingController();
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final emailController = TextEditingController();
+
   final passwordController = TextEditingController();
 
-  void signIn(){}
+  void signIn() async {
+
+    //loading
+    showDialog(context: context, builder: (context){
+      return const Center(
+        child: CircularProgressIndicator()
+      );
+    });
+    //sign In
+    try{
+      await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text, password: passwordController.text);
+      Navigator.pop(context);
+    } on FirebaseAuthException catch(e){
+      Navigator.pop(context);
+
+      if(e.code=='user-not-found'){
+        wrongEmail();
+
+      } else if(e.code=='wrong-password'){
+        wrongPassword();
+      }
+    }
+  }
+  void wrongEmail(){
+    showDialog(context: context, builder: (context){
+    return const AlertDialog(title:Text('Incorrect email'));
+    });
+  }
+
+  void wrongPassword(){
+    showDialog(context: context, builder: (context){
+      return const AlertDialog(title:Text('Incorrect password'));
+    });
+  }
 
   @override
   Widget build(BuildContext context){
     return Scaffold(
       backgroundColor:Colors.grey[300],
-      body:SafeArea(
+      body:
+      SafeArea(
+          child: SingleChildScrollView(
         child:Center(
             child:Column(
               mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height:50),
-                  const Icon(Icons.lock,
-                    size:100,
+                  Container(
+                    height: 200,
+                    width: 400,
+                    child: Lottie.asset('assets/animations/animated_lock.json'),
+
                   ),
-                  const SizedBox(height:50),
-                  Text(
-                    'Hello ',
+                  const SizedBox(height:30),
+                  Text('Login',
                     style: TextStyle(
-                        color: Colors.grey[700],
-                        fontSize:16
-                    ),
-                  ),
+                        color:Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+
+                    ), textAlign: TextAlign.left,),
                   const SizedBox(height:25),
-                  MyTextField(controller: usernameController,
-                  hintText: "Username",
+                  MyTextField(controller: emailController,
+                  hintText: "Email",
                   obscureText: false,),
                   const SizedBox(height:10),
                   MyTextField(controller: passwordController,
@@ -78,9 +124,9 @@ class LoginPage extends StatelessWidget{
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                    SquareTile(imagePath: 'lib/images/google.png'),
+                    SquareTile(imagePath: 'assets/images/google.png',imageColor: Colors.grey[200]!),
                     const SizedBox(width: 10),
-                    SquareTile(imagePath:'lib/images/apple.png'),
+                    SquareTile(imagePath:'assets/images/github.png',imageColor: Colors.black,),
                   ],
                   ),
                   const SizedBox(height: 50,),
@@ -96,7 +142,9 @@ class LoginPage extends StatelessWidget{
                     style: TextStyle(
                       color:Colors.blue, fontWeight: FontWeight.bold
                     ),)
-                  ],)
+                  ],),
+                  const SizedBox(height:50),
+
 
 
 
@@ -105,6 +153,7 @@ class LoginPage extends StatelessWidget{
             )
         )
       )
+    )
 
     );
   }
