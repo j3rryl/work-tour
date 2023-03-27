@@ -2,6 +2,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:sm_work/pages/search_page.dart';
+import 'package:sm_work/pages/saved_page.dart';
+import 'package:sm_work/pages/settings_page.dart';
+import 'package:sm_work/pages/temp_page.dart';
 
 class PageWrapper extends StatefulWidget{
   PageWrapper({super.key});
@@ -16,22 +20,11 @@ class _PageWrapperState extends State<PageWrapper> {
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Likes',
-      style: optionStyle,
-    ),
-    Text(
-      'Search',
-      style: optionStyle,
-    ),
-    Text(
-      'Profile',
-      style: optionStyle,
-    ),
+    Temp(),
+    Saved(),
+    Search(),
+    Settings()
+
   ];
 
   void signOut(){
