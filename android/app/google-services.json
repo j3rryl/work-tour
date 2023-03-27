@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "678279418514",
+    "project_id": "work-tour",
+    "storage_bucket": "work-tour.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678279418514:android:e278c39293032a9e860c4b",
+        "android_client_info": {
+          "package_name": "com.example.sm_work"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678279418514-3t4e7g79tkkdoom16pmmov651p5veig2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqW7el0FKpVEBJpvTS3NQI6C1FbimKelM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678279418514-3t4e7g79tkkdoom16pmmov651p5veig2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

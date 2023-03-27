@@ -71,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
 
                   ),
                   const SizedBox(height:30),
-                  Text('Login',
+                  const Text('Login',
                     style: TextStyle(
                         color:Colors.black,
                       fontWeight: FontWeight.bold,
@@ -126,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                     SquareTile(imagePath: 'assets/images/google.png',imageColor: Colors.grey[200]!),
                     const SizedBox(width: 10),
-                    SquareTile(imagePath:'assets/images/github.png',imageColor: Colors.black,),
+                    const SquareTile(imagePath:'assets/images/github.png',imageColor: Colors.black,),
                   ],
                   ),
                   const SizedBox(height: 50,),
@@ -138,15 +138,12 @@ class _LoginPageState extends State<LoginPage> {
                       color:Colors.grey[700]
                     ),),
                     const SizedBox(width: 4,),
-                    Text('Register Now',
+                    const Text('Register Now',
                     style: TextStyle(
                       color:Colors.blue, fontWeight: FontWeight.bold
                     ),)
                   ],),
                   const SizedBox(height:50),
-
-
-
 
                 ]
 
