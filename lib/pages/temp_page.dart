@@ -1,5 +1,8 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
+import '../models/get_job.dart';
 
 class Temp extends StatefulWidget {
   const Temp({Key? key}) : super(key: key);
@@ -14,7 +17,6 @@ class _TempState extends State<Temp> {
   Future getDocId() async {
     await FirebaseFirestore.instance.collection("jobs").get().then((snapshot)=>{
       snapshot.docs.forEach((element){
-        print(element.reference);
         docIDs.add(element.reference.id);
       }),
     });
@@ -91,7 +93,7 @@ class _TempState extends State<Temp> {
                 itemCount: docIDs.length,
                 itemBuilder: (context, index){
                   return ListTile(
-                    title: Text(docIDs[index]),
+                    title: GetJob(documentId:docIDs[index]),
                   );
                 }
               );
