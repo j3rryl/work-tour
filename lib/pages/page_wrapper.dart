@@ -1,4 +1,5 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -16,6 +17,7 @@ class PageWrapper extends StatefulWidget{
 
 class _PageWrapperState extends State<PageWrapper> {
   final user = FirebaseAuth.instance.currentUser;
+  //docs
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
@@ -23,13 +25,15 @@ class _PageWrapperState extends State<PageWrapper> {
     Temp(),
     Saved(),
     Search(),
-    Settings()
+    SettingTab()
 
   ];
 
   void signOut(){
     FirebaseAuth.instance.signOut();
   }
+
+
 
   @override
   Widget build(BuildContext context){

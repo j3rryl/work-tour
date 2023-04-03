@@ -69,30 +69,30 @@ FirebaseAuth.instance.signOut();
               centerTitle: true,
             ),
           ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: ClipRRect(
-                borderRadius:BorderRadius.circular(20),
-                child: Container(
-                  height: 400,
-                  color:Colors.deepPurple
-                ),
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: ClipRRect(
-                borderRadius:BorderRadius.circular(20),
-                child: Container(
-                    height: 400,
-                    color:Colors.deepPurple
-                ),
-              ),
-            ),
-          )
+          // SliverToBoxAdapter(
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(20.0),
+          //     child: ClipRRect(
+          //       borderRadius:BorderRadius.circular(20),
+          //       child: Container(
+          //         height: 400,
+          //         color:Colors.deepPurple
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          // SliverToBoxAdapter(
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(20.0),
+          //     child: ClipRRect(
+          //       borderRadius:BorderRadius.circular(20),
+          //       child: Container(
+          //           height: 400,
+          //           color:Colors.deepPurple
+          //       ),
+          //     ),
+          //   ),
+          // )
         ],
       ),
       bottomNavigationBar: Container(

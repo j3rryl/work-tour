@@ -29,6 +29,13 @@
             {
               "client_id": "678279418514-3t4e7g79tkkdoom16pmmov651p5veig2.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "678279418514-ndlae00mb87c537lksjvh8trdsj6g9o1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.smWork"
+              }
             }
           ]
         }

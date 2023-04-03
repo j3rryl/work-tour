@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+// import 'package:lottie/lottie.dart';
 import 'package:sm_work/components/my_button.dart';
 import 'package:sm_work/components/my_textfield.dart';
 import 'package:sm_work/components/square_tile.dart';
@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                   Container(
                     height: 200,
                     width: 400,
-                    child: Lottie.asset('assets/animations/animated_lock.json'),
+                    // child: Lottie.asset('assets/animations/animated_lock.json'),
 
                   ),
                   const SizedBox(height:30),
