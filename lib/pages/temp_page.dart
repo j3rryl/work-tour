@@ -92,8 +92,12 @@ class _TempState extends State<Temp> {
               return ListView.builder(
                 itemCount: docIDs.length,
                 itemBuilder: (context, index){
-                  return ListTile(
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListTile(
                     title: GetJob(documentId:docIDs[index]),
+                    tileColor: Colors.deepPurple[100],
+                    )
                   );
                 }
               );
