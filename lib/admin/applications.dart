@@ -7,14 +7,14 @@ import 'package:sm_work/pages/view_job.dart';
 
 import '../models/get_job.dart';
 
-class Saved extends StatefulWidget {
-  const Saved({Key? key}) : super(key: key);
+class Applications extends StatefulWidget {
+  const Applications({Key? key}) : super(key: key);
 
   @override
-  State<Saved> createState() => _SavedState();
+  State<Applications> createState() => _ApplicationsState();
 }
 
-class _SavedState extends State<Saved> {
+class _ApplicationsState extends State<Applications> {
   List<String>docIDs=[];
 
   Future getDocId() async {

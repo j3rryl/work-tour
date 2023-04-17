@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class GetJob extends StatelessWidget{
+class GetIcon extends StatelessWidget{
   final String documentId;
-  GetJob({required this.documentId});
+  GetIcon({required this.documentId});
   @override
   Widget build(BuildContext context){
     CollectionReference jobs = FirebaseFirestore.instance.collection('jobs');
@@ -12,7 +12,7 @@ class GetJob extends StatelessWidget{
         builder: ((context, snapshot){
       if(snapshot.connectionState==ConnectionState.done){
         Map<String, dynamic>data=snapshot.data!.data() as Map<String,dynamic>;
-        return Text('${data['name']}');
+        return Text('${data['posted_at']}');
       }
       return Text('loading...');
     }));

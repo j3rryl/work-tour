@@ -40,6 +40,11 @@ dependencies:
   firebase_auth: ^4.3.0
   google_nav_bar: ^5.0.6
   cloud_firestore: ^4.5.0
+  image_picker: ^0.8.5+3
+  easy_search_bar: ^2.4.2
+  firebase_storage: ^11.1.0
+  intl: ^0.17.0
+
 
 dev_dependencies:
   flutter_test:

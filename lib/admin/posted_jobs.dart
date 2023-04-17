@@ -7,14 +7,14 @@ import 'package:sm_work/pages/view_job.dart';
 
 import '../models/get_job.dart';
 
-class Temp extends StatefulWidget {
-  const Temp({Key? key}) : super(key: key);
+class Posted extends StatefulWidget {
+  const Posted({Key? key}) : super(key: key);
 
   @override
-  State<Temp> createState() => _TempState();
+  State<Posted> createState() => _PostedState();
 }
 
-class _TempState extends State<Temp> {
+class _PostedState extends State<Posted> {
   List<String>docIDs=[];
 
   Future getDocId() async {
@@ -38,7 +38,7 @@ class _TempState extends State<Temp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Work Tour'),
+        title: const Text('Recruiter'),
         backgroundColor: Colors.black,
         actions: <Widget>[
           IconButton(

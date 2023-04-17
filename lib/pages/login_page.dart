@@ -6,8 +6,9 @@ import 'package:sm_work/components/my_textfield.dart';
 import 'package:sm_work/components/square_tile.dart';
 
 class LoginPage extends StatefulWidget{
+  final VoidCallback showingRegisterPage;
 
-  LoginPage({super.key});
+  LoginPage({Key?key,required this.showingRegisterPage}):super(key:key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -17,7 +18,6 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
 
   final passwordController = TextEditingController();
-
   void signIn() async {
 
     //loading
@@ -41,6 +41,7 @@ class _LoginPageState extends State<LoginPage> {
       }
     }
   }
+
   void wrongEmail(){
     showDialog(context: context, builder: (context){
     return const AlertDialog(title:Text('Incorrect email'));
@@ -138,10 +139,14 @@ class _LoginPageState extends State<LoginPage> {
                       color:Colors.grey[700]
                     ),),
                     const SizedBox(width: 4,),
-                    const Text('Register Now',
-                    style: TextStyle(
-                      color:Colors.blue, fontWeight: FontWeight.bold
-                    ),)
+                    GestureDetector(
+                      onTap: widget.showingRegisterPage,
+                      child: const Text('Register Now',
+                        style: TextStyle(
+                            color:Colors.blue, fontWeight: FontWeight.bold
+                        ),),
+                    )
+
                   ],),
                   const SizedBox(height:50),
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class MyButton extends StatelessWidget{
+class RegisterButton extends StatelessWidget{
 final Function()? onTap;
-  const MyButton({
+  const RegisterButton({
     super.key,
     required this.onTap
 
@@ -18,7 +18,7 @@ final Function()? onTap;
           decoration: BoxDecoration(color: Colors.black,
               borderRadius: BorderRadius.circular(8)),
           child:Center(
-              child:Text("Sign In",
+              child:Text("Register",
                 style: TextStyle(color:Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 16),)
