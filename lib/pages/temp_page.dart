@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sm_work/models/get_icon.dart';
 import 'package:sm_work/models/get_subtitle.dart';
 import 'package:sm_work/pages/view_job.dart';
 
@@ -76,11 +77,7 @@ class _TempState extends State<Temp> {
                     tileColor: Colors.white,
 
                       trailing: Icon(Icons.arrow_forward_ios),
-                      leading: Image(
-                        image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
-                        width: 30,
-                        height: 30,
-                      ),
+                      leading: GetIcon(documentId:docIDs[index]),
                       onTap: (){navigateNextPage(context,docIDs[index]);},
 
 

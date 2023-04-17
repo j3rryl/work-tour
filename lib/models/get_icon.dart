@@ -12,9 +12,17 @@ class GetIcon extends StatelessWidget{
         builder: ((context, snapshot){
       if(snapshot.connectionState==ConnectionState.done){
         Map<String, dynamic>data=snapshot.data!.data() as Map<String,dynamic>;
-        return Text('${data['posted_at']}');
+        return Image(
+          image: NetworkImage('${data['image']}'),
+          width: 30,
+          height: 30,
+        );
       }
-      return Text('loading...');
+      return Image(
+        image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+        width: 30,
+        height: 30,
+      );
     }));
 
   }

@@ -17,8 +17,8 @@ class ViewJobItem extends StatelessWidget{
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              const Image(
-                image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+              Image(
+                image: NetworkImage('${data['image']}'),
                 width: 200,
                 height: 200,
               ),
@@ -34,7 +34,7 @@ class ViewJobItem extends StatelessWidget{
           Align(
             alignment: Alignment.centerLeft,
               child: Row(
-                  children:[ Icon(Icons.file_copy_outlined),SizedBox(width: 12), Text('${data['job_description']}'),]
+                  children:[ Icon(Icons.file_copy_outlined),SizedBox(width: 12), Text('${data['description']}'),]
               )
           ),
               SizedBox(height: 12),

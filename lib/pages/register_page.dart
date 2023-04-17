@@ -49,6 +49,10 @@ class _RegisterPageState extends State<RegisterPage> {
       uploadTask = ref.putFile(File(file.path));
       await uploadTask.whenComplete(() => null);
       imageUrl = await ref.getDownloadURL();
+      await user!.updatePhotoURL(imageUrl);
+      await user!.updateDisplayName(fNameController.text.trim());
+
+
       await FirebaseFirestore.instance.collection('users').add({
         'firstName':fNameController.text.trim(),
         'lastName':lNameController.text.trim(),
