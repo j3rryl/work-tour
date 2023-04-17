@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class ViewJobItem extends StatelessWidget{
+class ViewApplicant extends StatelessWidget{
   final String documentId;
-  ViewJobItem({required this.documentId});
+  ViewApplicant({required this.documentId});
 
   @override
   Widget build(BuildContext context){
-    CollectionReference jobs = FirebaseFirestore.instance.collection('jobs');
+    CollectionReference jobs = FirebaseFirestore.instance.collection('applications');
     return FutureBuilder<DocumentSnapshot>(
         future: jobs.doc(documentId).get(),
         builder: ((context, snapshot){
@@ -18,7 +18,7 @@ class ViewJobItem extends StatelessWidget{
           child: Column(
             children: [
               Image(
-                image: NetworkImage('${data['image']}'),
+                image: NetworkImage('${data['displayPhoto']}'),
                 width: 200,
                 height: 200,
               ),
@@ -26,7 +26,7 @@ class ViewJobItem extends StatelessWidget{
             Align(
             alignment: Alignment.centerLeft,
               child: Row(
-                  children:[ Icon(Icons.work_history),SizedBox(width: 12), Text('${data['name']}')]
+                  children:[ Icon(Icons.account_circle_outlined),SizedBox(width: 12), Text('${data['name']}')]
               )
             ),
 
@@ -34,14 +34,14 @@ class ViewJobItem extends StatelessWidget{
           Align(
             alignment: Alignment.centerLeft,
               child: Row(
-                  children:[ Icon(Icons.file_copy_outlined),SizedBox(width: 12), Text('${data['description']}'),]
+                  children:[ Icon(Icons.email_outlined),SizedBox(width: 12), Text('${data['email']}'),]
               )
           ),
               SizedBox(height: 12),
           Align(
           alignment: Alignment.centerLeft,
               child: Row(
-               children:[ Icon(Icons.location_city_outlined),SizedBox(width: 12), Text('${data['location']}')]
+               children:[ Icon(Icons.wallet_giftcard),SizedBox(width: 12), Text('${data['motivation']}')]
 
               )
           ),
@@ -49,11 +49,10 @@ class ViewJobItem extends StatelessWidget{
           Align(
           alignment: Alignment.centerLeft,
               child: Row(
-                  children:[ Icon(Icons.person_2_outlined),SizedBox(width: 12), Text('${data['posted_by']}')]
+                  children:[ Icon(Icons.money_outlined),SizedBox(width: 12), Text('${data['expectedSalary']}')]
               )
           ),
               SizedBox(height: 12),
-
             ],
           ),
         );

@@ -40,6 +40,11 @@ class _RegisterPageState extends State<RegisterPage> {
   String imageUrl="";
   late XFile file;
   Future signUp()async{
+    showDialog(context: context, builder: (context){
+      return const Center(
+          child: CircularProgressIndicator()
+      );
+    });
     final user = (await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim())).user;
@@ -52,6 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
       await user!.updatePhotoURL(imageUrl);
       await user!.updateDisplayName(fNameController.text.trim());
 
+      Navigator.pop(context);
 
       await FirebaseFirestore.instance.collection('users').add({
         'firstName':fNameController.text.trim(),

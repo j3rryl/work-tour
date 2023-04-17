@@ -41,7 +41,13 @@ class _PostPageState extends State<PostPage> {
   String imageUrl="";
   late XFile file;
   Future signUp()async{
+
     try{
+      showDialog(context: context, builder: (context){
+        return const Center(
+            child: CircularProgressIndicator()
+        );
+      });
       dynamic currentTime = DateFormat.jm().format(DateTime.now());
 
 
@@ -61,6 +67,7 @@ class _PostPageState extends State<PostPage> {
         'posted_at': currentTime,
         'uid_posted_by':user!.uid
       });
+      Navigator.pop(context);
       showDialog(context: context, builder: (context){
         return const AlertDialog(title:Text('Post Successful'));
       });

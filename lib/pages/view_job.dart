@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:sm_work/components/apply_job.dart';
 // import 'package:lottie/lottie.dart';
 import 'package:sm_work/components/my_button.dart';
@@ -18,7 +19,12 @@ class ViewJobPage extends StatefulWidget{
 }
 
 class _ViewJobPageState extends State<ViewJobPage> {
+
   final user = FirebaseAuth.instance.currentUser;
+  final nameController = TextEditingController();
+  final idController = TextEditingController();
+  final motivationController = TextEditingController();
+  final salaryController = TextEditingController();
 
   void applyJob(String fName, String lName, String id) async {
     //loading
@@ -30,17 +36,35 @@ class _ViewJobPageState extends State<ViewJobPage> {
   }
 
   Future addApplicationDetails()async{
+    showDialog(context: context, builder: (context){
+      return const Center(
+          child: CircularProgressIndicator()
+      );
+    });
     try{
+      dynamic currentTime = DateFormat.jm().format(DateTime.now());
+
       await FirebaseFirestore.instance.collection('applications').add({
       //   'firstName':fName,
       //   'lastName':lName,
         'jobId':widget.jobId,
-        'userId':user!.uid
-      //
+        'userId':user!.uid,
+        'posted_at':currentTime,
+        'name':nameController.text.trim(),
+        'idCard':idController.text.trim(),
+        'motivation':motivationController.text.trim(),
+        'expectedSalary':salaryController.text.trim(),
+        'displayPhoto':user!.photoURL,
+        'email':user!.email,
+
+
+        //
       });
+      Navigator.pop(context);
       showDialog(context: context, builder: (context){
         return const AlertDialog(title:Text('Application Successful'));
       });
+
 
     }catch(e){
       print(e);
@@ -76,6 +100,38 @@ class _ViewJobPageState extends State<ViewJobPage> {
                               children: [
 
                                 ViewJobItem(documentId: '${widget.jobId}'),
+
+                                const SizedBox(height:1),
+                                const Text('Apply Here',
+                                  style: TextStyle(
+                                    color:Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+
+                                  ), textAlign: TextAlign.left,),
+                                const SizedBox(height:20),
+
+                                MyTextField(controller: nameController,
+                                  hintText: "Name",
+                                  obscureText: false,),
+                                const SizedBox(height:10),
+
+                                MyTextField(controller: idController,
+                                  hintText: "National ID/Passport",
+                                  obscureText: false,),
+                                const SizedBox(height:10),
+
+                                MyTextField(controller: motivationController,
+                                  hintText: "Motivation",
+                                  obscureText: false,),
+                                const SizedBox(height:10),
+
+                                MyTextField(controller: salaryController,
+                                  hintText: "Expected Salary",
+                                  obscureText: false,),
+                                const SizedBox(height:20),
+
+
                             //     const SizedBox(
                             // width: 200,
                             //   height: 100,
@@ -83,15 +139,11 @@ class _ViewJobPageState extends State<ViewJobPage> {
                               ],
                             ),
                             ),
+
+
                           const SizedBox(height: 25,),
                           ApplyJobButton(onTap: addApplicationDetails),
                           const SizedBox(height: 50,),
-
-                          const SizedBox(height: 50,),
-
-                          const SizedBox(height: 50,),
-
-                          const SizedBox(height:50),
 
                         ],
                 )

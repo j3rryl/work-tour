@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sm_work/admin/view_a_job.dart';
 import 'package:sm_work/models/get_icon.dart';
 import 'package:sm_work/models/get_subtitle.dart';
 import 'package:sm_work/pages/view_job.dart';
@@ -30,7 +31,7 @@ class _PostedState extends State<Posted> {
   }
   void navigateNextPage(BuildContext ctx,jobId){
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_){
-      return ViewJobPage(jobId:jobId);
+      return ViewAJobPage(jobId:jobId);
     }));
   }
 

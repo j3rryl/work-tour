@@ -8,16 +8,16 @@ import 'package:sm_work/components/my_textfield.dart';
 import 'package:sm_work/components/square_tile.dart';
 import 'package:sm_work/models/view_job_item.dart';
 
-class ViewJobPage extends StatefulWidget{
-  ViewJobPage ({super.key,this.jobId}) ;
+class ViewAJobPage extends StatefulWidget{
+  ViewAJobPage ({super.key,this.jobId}) ;
 
   final String?jobId;
 
   @override
-  State<ViewJobPage> createState() => _ViewJobPageState();
+  State<ViewAJobPage> createState() => _ViewAJobPageState();
 }
 
-class _ViewJobPageState extends State<ViewJobPage> {
+class _ViewAJobPageState extends State<ViewAJobPage> {
   final user = FirebaseAuth.instance.currentUser;
 
   void applyJob(String fName, String lName, String id) async {
@@ -31,13 +31,6 @@ class _ViewJobPageState extends State<ViewJobPage> {
 
   Future addApplicationDetails()async{
     try{
-      await FirebaseFirestore.instance.collection('applications').add({
-      //   'firstName':fName,
-      //   'lastName':lName,
-        'jobId':widget.jobId,
-        'userId':user!.uid
-      //
-      });
       showDialog(context: context, builder: (context){
         return const AlertDialog(title:Text('Application Successful'));
       });
@@ -61,7 +54,7 @@ class _ViewJobPageState extends State<ViewJobPage> {
                         children: [
                           const SizedBox(height:30),
 
-                          const Text('View Job',
+                          const Text('View Job ',
                             style: TextStyle(
                               color:Colors.black,
                               fontWeight: FontWeight.bold,
@@ -84,14 +77,7 @@ class _ViewJobPageState extends State<ViewJobPage> {
                             ),
                             ),
                           const SizedBox(height: 25,),
-                          ApplyJobButton(onTap: addApplicationDetails),
-                          const SizedBox(height: 50,),
 
-                          const SizedBox(height: 50,),
-
-                          const SizedBox(height: 50,),
-
-                          const SizedBox(height:50),
 
                         ],
                 )
